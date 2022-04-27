@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Booking"/>
+
+  
+<!--   <navigation-rule>
+   <from-view-id>/createcustomer.jsp</from-view-id>
+   <navigation-case>
+      <from-action>#{customer.validate}</from-action>   
+   <from-outcome>viewCustomerDetails</from-outcome>
+   <to-view-id>/viewCustomerDetails.jsp</to-view-id>
+   </navigation-case>
+
+</navigation-rule>-->

@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+    
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>            
+     <style type="text/css"> 
+    /*demo*/
+    .ui-dataview .ui-dataview-header {
+    border-bottom: 0 none;
+    display: none;
+}
+
+ 
+  .ui-dataview .product-item-content {
+        border: 1px solid;
+        border-radius: 3px;
+        margin: .3rem;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+  .ui-dataview .product-image {
+        width: 200%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+    .ui-dataview-list .ui-dataview-row {
+        border-bottom: 3px solid  #db15ba;
+        border-left: 3px solid  #db15ba;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color:  #db15ba;
+    }
+    .ui-dataview .data{
+         float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+    }
+    
+    
+ 
+    .logo {
+        width: 5%;
+    }
+    .detail {
+        width: 85%;
+        padding-left: 100px;
+    }
+/*     .ui-datepicker .ui-datepicker-calendar td .ui-state-disabled {
+        display: inline-block;
+        width: 2.5rem;
+        height: 2.5rem;
+      }*/
+</style>
+
+        <h:form> 
+         #{user.init()}
+           
+     <p:card style="width: 100%;height: 150px; color: white;
+         background-color:  bisque">
+           <f:facet name="title" class="book">
+       Booking.com 
+       <span  style="width: 200px; height: 20px ;  margin-left: 1300px;"/>
+            <p:commandButton action="register.xhtml?faces-redirect=true" styleClass="ui-button-secondary"  value="Register"/>
+                <span  style="width: 30px; height: 20px"/>
+  <p:commandButton action="signin.xhtml?faces-redirect=true" styleClass="ui-button-secondary"  value="Sign in"/>
+    </f:facet>
+
+     <p:toolbarGroup>
+                <p:commandButton type="button" value="Stays" icon="pi pi-home" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+                
+                <p:commandButton type="button" value="Flights" icon="pi pi-folder-open" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+   <p:commandButton type="button" value="Car rentls" icon="pi pi-car" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+                
+                  <p:commandButton type="button" value="Airport Taxis" icon="pi pi-file" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+                                    <p:commandButton type="button" value="Attractions" icon="pi pi-star" styleClass="rounded-button ui-button-secondary" />
+
+                  
+            </p:toolbarGroup>
+                 
+     </p:card>
+        </h:form>
+
+ 
+<h:form id="form2">
+    <h:panelGrid columns="2"  cellpadding="80" >
+<p:card style="width: 25rem; margin-bottom: 2em">
+       <div class="ui-fluid">
+        <div class="p-field">
+            <h1>Search</h1>
+            <label for="firstname1"> Destination/property name:</label>
+              <p:overlayPanel for="going" style="width:350px">
+             
+                  <p:selectOneListbox id="bafsic" value="#{user.text}" >
+                <f:selectItem itemLabel="Nablus" itemValue="New York"/>
+                <f:selectItem itemLabel="Jerusalem" itemValue="Rome"/>
+                <f:selectItem itemLabel="Bethlehem" itemValue="London"/>
+                <f:selectItem itemLabel="Ramallah" itemValue="Istanbul"/>
+                <f:selectItem itemLabel="Hebron" itemValue="Paris"/>
+                <p:ajax update="going"/>
+            </p:selectOneListbox>
+                
+        </p:overlayPanel>
+  
+     <h:panelGrid id="going">  
+
+
+    <p:commandButton  value="#{user.text} " icon="pi pi-search" styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+
+</h:panelGrid> 
+            
+        </div>
+    <div class="p-field">
+        <label for="firstname">Check-in date</label>
+      
+           <p:datePicker id="multuy"    showIcon="true" appendTo="@(body)"  style=" font-weight: bold ; align-content: center; 
+                         
+                             
+                             " selectionMode="multiple" value="#{calendarView.multip}" numberOfMonths="2" placeholder="Check-in Date">
+                  
+              
+             </p:datePicker>
+        
+
+      </div>
+               <div class="p-field">
+        <label for="firstname">Check-out date</label>
+      
+           <p:datePicker id="multu1y"    showIcon="true" appendTo="@(body)"  style=" font-weight: bold ; align-content: center; 
+                         
+                             
+                             " selectionMode="multiple" value="#{calendarView.multip}" numberOfMonths="2" placeholder="Check-Out Date">
+                  
+              
+             </p:datePicker>
+        
+
+      </div>
+           <div class="p-field">
+              
+         
+                            <h:panelGrid columns="3">  
+     <p:overlayPanel for="out" style="width:350px">
+              <p:panelGrid columns="2"  styleClass="companyHeaderGrid">
+               
+                <p:outputLabel for="@next" value="Adults"/>
+                <p:spinner id="horizontal" value="#{user.num1}" buttons="horizontal"  min="1" style="border: none; outline:none;" size="2">
+                    <p:ajax update="out" process="@this"  />  
+                </p:spinner>
+             <p:outputLabel for="@next" value="Children"/>
+             <p:spinner id="horizontal2" value="#{user.num2}" buttons="horizontal"  min="0"  style="border: none; outline:none;" size="2">
+                                 <p:ajax update="out" process="@this"  />  
+             </p:spinner>
+           
+                  <p:outputLabel for="@next" value="Rooms"/>
+                   <p:spinner id="horizontal3" value="#{user.num3}" buttons="horizontal"   min="1" style="border: none; outline:none;" size="2">
+                                 <p:ajax update="out" process="@this"  />  
+             </p:spinner>
+           
+                </p:panelGrid>
+        </p:overlayPanel>
+
+</h:panelGrid>
+               <h:panelGrid id="out">  
+
+ 
+<p:commandButton  value=" #{user.num1}:Adults. #{user.num2}:Children. #{user.num3}:rooms" icon="pi pi-user" styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+
+
+
+</h:panelGrid>
+    </div>
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           </div>
+ 
+
+    
+    
+</p:card>
+       
+ 
+    
+    <p:dataView styleClass="data" var="car" value="#{user.uservos}" style=" width: 50% ; float:left;"
+                gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+ 
+        <p:dataViewGridItem>
+            <p:panel header="#{car.desc}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:70%">
+                    <p:graphicImage  name="image/#{car.image}"  class="product-image"/> 
+ 
+                    <h:outputText value="#{car.nameHotel}" />
+
+                </h:panelGrid>
+            </p:panel>
+        </p:dataViewGridItem>
+ 
+        <p:dataViewListItem>
+            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+                <p:graphicImage  name="image/#{car.image}"  class="product-image" /> 
+ 
+                <p:outputPanel>
+                    <h:panelGrid columns="1" cellpadding="5">
+                         <h1>  #{car.nameHotel}"</h1>     
+                        <h6> #{car.desc}</h6>
+                       
+ 
+                    </h:panelGrid>
+                </p:outputPanel>
+ 
+              
+            </h:panelGrid>
+        </p:dataViewListItem>
+    </p:dataView>
+    </h:panelGrid>
+
+</h:form>    
+              
+    </h:body>
+</html>
+

@@ -1,0 +1,386 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+           <h:outputStylesheet library="css" name="style.css"/>
+        <title>Facelet Title</title>
+    </h:head>
+    
+    <script type="text/javascript">
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        millisecondText: 'Milisegundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día',
+        today: 'Hoy',
+        clear: 'Claro'
+    };
+    PrimeFaces.locales ['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        millisecondText: 'Millisekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag',
+        today: 'Heute',
+        clear: 'Löschen'
+    };
+</script>
+
+<script type="text/javascript">
+    //<![CDATA[
+    function dateTemplateFunc(date) {
+        return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+    }
+
+    //]]>
+</script>
+    <h:body>
+        <style type="text/css">
+    .product-item .product-item-content {
+        border:none;
+        
+        /*border-radius: 3px;*/
+        margin: .3rem;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .product-item .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+</style>
+
+        <h:form> 
+         
+           
+     <p:card style="width: 100%;height: 300px; color: white;
+              background-color:  bisque">
+
+         <f:facet name="title" class="book">
+       Booking.com 
+       <span  style="width: 200px; height: 20px ;  margin-left: 600px;"/>
+            <p:commandButton action="register.xhtml?faces-redirect=true" styleClass="ui-button-secondary"  value="Register"/>
+                <span  style="width: 30px; height: 20px"/>
+  <p:commandButton action="signin.xhtml?faces-redirect=true" styleClass="ui-button-secondary"  value="Sign in"/>
+    </f:facet>
+
+     <p:toolbarGroup>
+                <p:commandButton type="button" value="Stays" icon="pi pi-home" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+                
+                <p:commandButton type="button" value="Flights" icon="pi pi-folder-open" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+   <p:commandButton type="button" value="Car rentls" icon="pi pi-car" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+                
+                  <p:commandButton type="button" value="Airport Taxis" icon="pi pi-file" styleClass="rounded-button ui-button-secondary" />
+                  <span  style="width: 30px; height: 20px"/>
+                                    <p:commandButton type="button" value="Attractions" icon="pi pi-star" styleClass="rounded-button ui-button-secondary" />
+
+                  
+            </p:toolbarGroup>
+          <br/>
+           <br/>
+           <p style="font-size: 20px; "><h2>Find your next stay</h2>  
+               <h3>Search deals on hotels, homes, and much more...</h3>
+
+</p>
+           <div class="card" align="center" style="color:red;">
+               <p:panelGrid styleClass="companyHeaderGrid"  style="margin: 0;">
+     <p:row style=" margin: 0;">
+         
+         
+         
+<div class="demo-container">
+     
+    
+                <p:column>
+                   <h:panelGrid columns="3">  
+     <p:overlayPanel for="out" style="width:350px">
+              <p:panelGrid columns="2"  styleClass="companyHeaderGrid">
+               
+                <p:outputLabel for="@next" value="Adults"/>
+                <p:spinner id="horizontal" value="#{user.num1}" buttons="horizontal"  style="border: none; outline:none;" size="2">
+                    <p:ajax update="out" process="@this"  />  
+                </p:spinner>
+             <p:outputLabel for="@next" value="Children"/>
+             <p:spinner id="horizontal2" value="#{user.num2}" buttons="horizontal"  style="border: none; outline:none;" size="2">
+                                 <p:ajax update="out" process="@this"  />  
+             </p:spinner>
+           
+                  <p:outputLabel for="@next" value="Rooms"/>
+                <p:spinner id="horizontal3" value="#{user.num3}" buttons="horizontal"  style="border: none; outline:none;" size="2"/>
+           
+                </p:panelGrid>
+        </p:overlayPanel>
+
+</h:panelGrid>
+                   
+                
+<h:panelGrid id="out">  
+
+ 
+<p:commandButton value=" #{user.num1}:Adults. #{user.num2}:Children. #{user.num3}:rooms" icon="pi pi-user" styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+
+
+
+</h:panelGrid>  
+                    </p:column>
+                    <p:column>  
+                  <p:growl  id="msg" />
+               <p:datePicker id="multuy"   class="pi pi-calendar"  style=" font-weight: bold ; align-content: center; 
+                             
+                             " selectionMode="multiple" value="#{calendarView.multip}" numberOfMonths="2" placeholder="Check in -Check out">
+                  
+                 <p:ajax  event="dateSelect"  listener="#{calendarView.onDateSelectmulti}"  update="msg"/>
+             </p:datePicker>
+                  </p:column>
+              
+                <p:column>
+                   <h:panelGrid columns="3">  
+     <p:overlayPanel for="going" style="width:350px">
+             
+                  <p:selectOneListbox id="bafsic" value="#{user.text}" >
+                <f:selectItem itemLabel="Nablus" itemValue="New York"/>
+                <f:selectItem itemLabel="Jerusalem" itemValue="Rome"/>
+                <f:selectItem itemLabel="Bethlehem" itemValue="London"/>
+                <f:selectItem itemLabel="Ramallah" itemValue="Istanbul"/>
+                <f:selectItem itemLabel="Hebron" itemValue="Paris"/>
+                <p:ajax update="going"/>
+            </p:selectOneListbox>
+                
+        </p:overlayPanel>
+
+</h:panelGrid>  
+<h:panelGrid id="going">  
+
+
+    <p:commandButton  value="#{user.text} " icon="pi pi-user" styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+
+</h:panelGrid> 
+                    </p:column>
+                 
+                    <p:column>
+                        <p:commandButton type="submit" value="Search" styleClass="ui-button-raised ui-button-secondary" action="#{user.register1()}" />
+                   </p:column>
+                  
+                
+       
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         </div>
+         
+         
+         
+     </p:row>
+        </p:panelGrid>
+</div>
+</p:card>
+         
+           
+      
+        </h:form>
+        <br></br>
+             <br></br>
+             <br/>
+             <br/>
+        
+         <h:form id="f2">
+            
+    <div class="card">
+        <p:carousel value="#{carouselView.products}" var="product" numVisible="6" numScroll="6"
+                    responsiveOptions="#{carouselView.responsiveOptions}">
+            <f:facet name="header">
+                <h3  style=" margin-left: 50px">Browse by property type</h3>
+            </f:facet>
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <p:graphicImage name="image/#{product.image}" styleClass="product-image" />
+                    </div>
+                    <div>
+                        <h4 class="p-mb-1">#{product.name}</h4>
+                       
+                      
+                        
+                    </div>
+                </div>
+            </div>
+        </p:carousel>
+    </div>
+        </h:form>
+            <h:form id="f3">
+            
+    <div class="card">
+        <p:carousel value="#{carouselView.products}" var="product" numVisible="6" numScroll="6"
+                    responsiveOptions="#{carouselView.responsiveOptions}">
+            <f:facet name="header">
+                  <h3  style=" margin-left: 50px">Browse by property type</h3>
+            </f:facet>
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <p:graphicImage name="image/#{product.image}" styleClass="product-image"/>
+                    </div>
+                    <div>
+                        <h4 class="p-mb-1">#{product.name}</h4>
+                       
+                      
+                        
+                    </div>
+                </div>
+            </div>
+        </p:carousel>
+    </div>
+
+                
+                
+        
+        </h:form>
+
+            
+                 
+           
+                 
+                 
+
+             <h:form>
+                 
+                 
+                   <p:toolbar   style="border: 0;margin:0; 
+margin: 0 auto; background: none !important;font-size: larger !important; height: 10%; "  >
+            <p:toolbarGroup>
+                <p:column>
+                   <h:panelGrid columns="3">  
+     <p:overlayPanel for="out" style="width:350px">
+              <p:panelGrid columns="2"  styleClass="companyHeaderGrid">
+               
+                <p:outputLabel for="@next" value="Adults"/>
+                <p:spinner id="horizontal" value="#{user.num1}" buttons="horizontal"  style="border: none; outline:none;" size="2">
+                    <p:ajax update="out" process="@this"  />  
+                </p:spinner>
+             <p:outputLabel for="@next" value="Children"/>
+             <p:spinner id="horizontal2" value="#{user.num2}" buttons="horizontal"  style="border: none; outline:none;" size="2">
+                                 <p:ajax update="out" process="@this"  />  
+             </p:spinner>
+           
+                  <p:outputLabel for="@next" value="Rooms"/>
+                  <p:spinner id="horizontal3" value="#{user.num3}" buttons="horizontal"  style="border: none; outline:none;" size="2"/>
+           
+                </p:panelGrid>
+        </p:overlayPanel>
+
+</h:panelGrid>
+                   
+                
+<h:panelGrid id="out">  
+
+ 
+<p:commandButton  value=" #{user.num1}:Adults. #{user.num2}:Children.#{user.num3}:rooms" icon="pi pi-user" styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+
+
+
+</h:panelGrid>  
+                    </p:column>
+                    <p:column>  
+                  <p:growl  id="msg" />
+               <p:datePicker id="multuy"   class="pi pi-calendar"  style=" font-weight: bold ; align-content: center; 
+                             
+                             " selectionMode="multiple" value="#{calendarView.multip}" numberOfMonths="2" placeholder="Check in -Check out">
+                  
+                 <p:ajax  event="dateSelect"  listener="#{calendarView.onDateSelectmulti}"  update="msg"/>
+             </p:datePicker>
+                  </p:column>
+                <p:column>
+                  <p:commandButton value="Search"/>
+                   </p:column>
+                  
+                <p:column>
+                   <h:panelGrid columns="3">  
+     <p:overlayPanel for="going" style="width:350px">
+             
+                  <p:selectOneListbox id="bafsic" value="#{user.text}" >
+                <f:selectItem itemLabel="New York" itemValue="New York"/>
+                <f:selectItem itemLabel="Rome" itemValue="Rome"/>
+                <f:selectItem itemLabel="London" itemValue="London"/>
+                <f:selectItem itemLabel="Istanbul" itemValue="Istanbul"/>
+                <f:selectItem itemLabel="Paris" itemValue="Paris"/>
+                <p:ajax update="going"/>
+            </p:selectOneListbox>
+                
+        </p:overlayPanel>
+
+</h:panelGrid>  
+<h:panelGrid id="going">  
+
+
+    <p:commandButton  value="#{user.text} " icon="pi pi-user" styleClass="ui-button-raised ui-button-secondary ui-button-flat"/>
+
+</h:panelGrid> 
+                    </p:column>
+                 
+                  
+                  
+            </p:toolbarGroup>
+                   </p:toolbar>
+
+             </h:form>
+                 
+      
+    </h:body>
+</html>
+
